@@ -3,7 +3,9 @@
 ## TODO
 
 - Get ambient display working
-  - Return JSON from the PHP page if requested
+  - Create script that queries JSON for the jam_time_is_now flag
+- Use associative array so JSON makes more sense
+- Check for valid format at the beginning of the script
 
 ## Log
 
@@ -12,6 +14,9 @@
 - Clean up instrument listing so it's more readable.
 - Remove extraneous comments from index.php
 - Turn off automatic refresh
+- Get ambient display working
+  - Return JSON from the PHP page if requested
+
 
 ### 2022-12-25
 

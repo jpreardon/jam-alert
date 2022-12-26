@@ -1,4 +1,5 @@
 <?php
+require_once 'functions.php';
 
 // Some constants
 define('MAX_PING_MS', 50);
@@ -90,90 +91,21 @@ usort($display_output, function ($a, $b) {
     return 0;
 });
 
-?>
-
-<!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <title>Jam Alert!</title>
-                <meta name="viewport" content="width=device-width,initial-scale=1">
-                <style>
-                    body {
-                        font-family: sans-serif;
-                    }
-
-                    table {
-                        border-collapse: collapse;
-                    }
-
-                    th {
-                        text-align: left;
-                    }
-
-                    th, td {
-                        border: 1px solid black;
-                    }
-
-                    th, td {
-                        padding: 4px;
-                        margin: -1px;
-                    }
-
-                    .highlight {
-                        background-color: #feff89;
-                    }
-
-                    .instrument_list {
-                        margin: 0;
-                        padding: 0;
-                        list-style: none;
-                    }
-
-                </style>
-            </head>
-            <body>
-                <h1>Jam Alert!</h1>
-                <div>
-                <?php if($jam_time_is_now) print '<p>JAM TIME IS NOW!!!</p>'; ?>
-                <table>
-                    <tr>
-                        <th>Directory Server</th>
-                        <th>Server</th>
-                        <th>Ping</th>
-                        <th>Clients</th>
-                        <th>Instruments</th>
-                    </tr>
-
-<?php
-
-
-
-foreach($display_output as $server_display) {
-    if($server_display[5]) {
-        print '<tr class="highlight">';
-    } else {
-        print '<tr>';
-    }
-    
-    print '<td>' . $server_display[0] . '</td>';
-    print '<td>' . $server_display[1] . '</td>';
-    print '<td>' . $server_display[2] . '</td>';
-    print '<td>' . $server_display[3] . '</td>';
-    print '<td><ul class="instrument_list">';
-        foreach($server_display[4] as $instrument) {
-            print '<li>' . $instrument . '</li>';
-        }; 
-    print '</ul></td>';
+// Here, we need to decide how to return all of this wonderful information
+// TODO: Should do this in the beginning so it fails faster
+if(array_key_exists('format', $_REQUEST)) {
+    switch ($_REQUEST['format']) {
+        case 'json':
+            render_json($jam_time_is_now, $display_output);
+            break;
+        case 'html':
+            render_html($jam_time_is_now, $display_output);
+            break;
+        default:
+            print $_REQUEST['format'] . ' is an unsupported format.';
+    };
+} else {
+    render_html($jam_time_is_now, $display_output);
 };
 
 ?>
-
-</table>
-<p id="refresh-datetime"></p>
-</div>
-
-                <script>
-                    document.getElementById('refresh-datetime').innerHTML = 'Last refreshed: ' + new Date().toString();
-                </script>
-            </body>
-        </html>
