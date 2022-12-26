@@ -17,7 +17,11 @@
   - Return JSON from the PHP page if requested
   - Move server scripts into a 'server' directory
 - Use associative array so JSON makes more sense
+- Move configs to config.php, add client directory with the most basic of python scripts.
 
+Helpful for re-imaging raspberry pi: https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html
+
+Helpful for setting up Apache and PHP: https://pimylifeup.com/raspberry-pi-apache/
 
 ### 2022-12-25
 

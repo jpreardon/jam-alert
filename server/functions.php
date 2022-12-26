@@ -42,13 +42,6 @@ function render_html($jam_time_is_now, $display_output) {
             </head>
             <body>
                 <h1>Jam Alert!</h1>
-    EOF;
-
-    if($jam_time_is_now) {
-        $html .= '<p>JAM TIME IS NOW!!!</p>';
-    };
-
-    $html .= <<<EOF
                 <table>
                     <tr>
                         <th>Directory Server</th>
