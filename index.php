@@ -7,7 +7,7 @@ define('API_ENDPOINT', 'http://localhost:8000/servers.php');
 define('EXCLUDE_INSTRUMENT', 'Bass Guitar');
 define('HIGHLIGHT_INSTRUMENT', 'Drums');
 
-// Directory servers to check (these are the built in Jamulus ones https://jamulus.io/wiki/Running-a-Server#3-directory)
+// Directory servers to check (these are the built-in Jamulus ones https://jamulus.io/wiki/Running-a-Server#3-directory)
 $directory_servers = array(
     ['Any Genre 1', 'anygenre1.jamulus.io:22124'],
     ['Any Genre 2', 'anygenre2.jamulus.io:22224'],
@@ -96,7 +96,6 @@ usort($display_output, function ($a, $b) {
             <html lang="en">
             <head>
                 <title>Jam Alert!</title>
-                <meta http-equiv="refresh" content="300">
                 <meta name="viewport" content="width=device-width,initial-scale=1">
                 <style>
                     body {

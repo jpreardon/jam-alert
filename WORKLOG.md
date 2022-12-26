@@ -11,6 +11,7 @@
 
 - Clean up instrument listing so it's more readable.
 - Remove extraneous comments from index.php
+- Turn off automatic refresh
 
 ### 2022-12-25
 
