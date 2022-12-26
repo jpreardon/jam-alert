@@ -30,7 +30,7 @@ API Data
 
 
 // Some constants
-define('MAX_PING_MS', 50);
+define('MAX_PING_MS', 300); //50
 define('MIN_CLIENTS', 1);
 define('API_ENDPOINT', 'http://localhost:8000/servers.php');
 define('EXCLUDE_INSTRUMENT', 'Bass Guitar');
@@ -63,7 +63,6 @@ foreach($directory_servers as $directory_server) {
         $name = '';
         $highlight = FALSE;
 
-
         // Only list servers where <= MAX PING and with clients >= MIN CLIENTS, ignore pings less than 1ms.
         if($server['ping'] <= MAX_PING_MS && $server['ping'] > 0 && $server['nclients'] >= MIN_CLIENTS) {
             if($server['name'] == '') {
@@ -72,29 +71,40 @@ foreach($directory_servers as $directory_server) {
                 $name = $server['name'];
             };
 
-            $instruments = '';
+            $instruments = array();
 
             // Get the instruments
             foreach($server['clients'] as $client) {
                 if($client['instrument'] == '-') {
-                    $instruments .= 'Unknown, ';
+                    array_push($instruments, 'Unknown');
                 } else {
-                    $instruments .= $client['instrument'] . ', ';
+                    array_push($instruments, $client['instrument']);
                 };
             };
 
-            // TODO: This is a hack, chop the last two chars off the instruments
-            $instruments = substr($instruments, 0, strlen($instruments) - 2);
+            // Alphabetize the instruments array
+            sort($instruments);
+
+            // Summarize/flatten duplicate instruments
+            $instrument_summary = array_count_values($instruments);
+            $instruments_flat = array();
+
+            foreach ($instrument_summary as $instrument => $number_of_instruments) {
+                if($number_of_instruments == 1) {
+                    array_push($instruments_flat, $instrument);
+                } else {
+                    array_push($instruments_flat, $instrument . ' (' . $number_of_instruments . ')');
+                };
+            };
 
             // Check if this server should be highlighted
-            if(str_contains($instruments, HIGHLIGHT_INSTRUMENT) && !str_contains($instruments, EXCLUDE_INSTRUMENT)) {
+            if(in_array(HIGHLIGHT_INSTRUMENT, $instruments) && !in_array(EXCLUDE_INSTRUMENT, $instruments)) {
                 $highlight = TRUE;
                 $jam_time_is_now = TRUE;
             };
 
-            // Add the following to the array
-            // directory_server_name, server_name, ping, nclients, instruments, highlight
-            array_push($display_output, [$directory_server[0], $name, $server['ping'], $server['nclients'], $instruments, $highlight]);
+            // Add the following to the array directory_server_name, server_name, ping, nclients, instruments, highlight
+            array_push($display_output, [$directory_server[0], $name, $server['ping'], $server['nclients'], $instruments_flat, $highlight]);
         };
     };
 };
@@ -140,14 +150,21 @@ usort($display_output, function ($a, $b) {
                     }
 
                     .highlight {
-                        background-color: yellow;
+                        background-color: #feff89;
+                    }
+
+                    .instrument_list {
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
                     }
 
                 </style>
             </head>
             <body>
                 <h1>Jam Alert!</h1>
-                <?php if($jam_time_is_now) print '<p class="highlight">JAM TIME IS NOW!!!</p>'; ?>
+                <div>
+                <?php if($jam_time_is_now) print '<p>JAM TIME IS NOW!!!</p>'; ?>
                 <table>
                     <tr>
                         <th>Directory Server</th>
@@ -172,13 +189,18 @@ foreach($display_output as $server_display) {
     print '<td>' . $server_display[1] . '</td>';
     print '<td>' . $server_display[2] . '</td>';
     print '<td>' . $server_display[3] . '</td>';
-    print '<td>' . $server_display[4] . '</td>';
+    print '<td><ul class="instrument_list">';
+        foreach($server_display[4] as $instrument) {
+            print '<li>' . $instrument . '</li>';
+        }; 
+    print '</ul></td>';
 };
 
 ?>
 
 </table>
 <p id="refresh-datetime"></p>
+</div>
 
                 <script>
                     document.getElementById('refresh-datetime').innerHTML = 'Last refreshed: ' + new Date().toString();
