@@ -4,7 +4,7 @@ require_once 'functions.php';
 // Some constants
 define('MAX_PING_MS', 50);
 define('MIN_CLIENTS', 1);
-define('API_ENDPOINT', 'http://localhost:8000/servers.php');
+define('API_ENDPOINT', 'http://localhost:8000/jamulus-php/servers.php');
 define('EXCLUDE_INSTRUMENT', 'Bass Guitar');
 define('HIGHLIGHT_INSTRUMENT', 'Drums');
 

@@ -15,6 +15,7 @@
 - Turn off automatic refresh
 - Get ambient display working
   - Return JSON from the PHP page if requested
+  - Move server scripts into a 'server' directory
 - Use associative array so JSON makes more sense
 
 
