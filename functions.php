@@ -60,18 +60,18 @@ function render_html($jam_time_is_now, $display_output) {
     EOF;
 
     foreach($display_output as $server_display) {
-        if($server_display[5]) {
+        if($server_display['highlight']) {
             $html .= '<tr class="highlight">';
         } else {
             $html .= '<tr>';
         }
         
-        $html .= '<td>' . $server_display[0] . '</td>';
-        $html .= '<td>' . $server_display[1] . '</td>';
-        $html .= '<td>' . $server_display[2] . '</td>';
-        $html .= '<td>' . $server_display[3] . '</td>';
+        $html .= '<td>' . $server_display['directory_server'] . '</td>';
+        $html .= '<td>' . $server_display['name'] . '</td>';
+        $html .= '<td>' . $server_display['ping'] . '</td>';
+        $html .= '<td>' . $server_display['nclients'] . '</td>';
         $html .= '<td><ul class="instrument_list">';
-            foreach($server_display[4] as $instrument) {
+            foreach($server_display['instruments'] as $instrument) {
                 $html .= '<li>' . $instrument . '</li>';
             }; 
         $html .= '</ul></td>';

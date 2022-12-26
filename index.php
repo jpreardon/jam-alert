@@ -76,15 +76,21 @@ foreach($directory_servers as $directory_server) {
             };
 
             // Add the following to the array directory_server_name, server_name, ping, nclients, instruments, highlight
-            array_push($display_output, [$directory_server[0], $name, $server['ping'], $server['nclients'], $instruments_flat, $highlight]);
+            //array_push($display_output, [$directory_server[0], $name, $server['ping'], $server['nclients'], $instruments_flat, $highlight]);
+            array_push($display_output, ['directory_server' => $directory_server[0], 
+                                        'name' => $name, 
+                                        'ping' => $server['ping'], 
+                                        'nclients' => $server['nclients'], 
+                                        'instruments' => $instruments_flat,
+                                        'highlight' => $highlight]);
         };
     };
 };
 
 // Sort the array by ping time
 usort($display_output, function ($a, $b) {
-    $a_val = (int) $a[2];
-    $b_val = (int) $b[2];
+    $a_val = (int) $a['ping'];
+    $b_val = (int) $b['ping'];
 
     if($a_val > $b_val) return 1;
     if($a_val < $b_val) return -1;

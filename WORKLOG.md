@@ -4,7 +4,6 @@
 
 - Get ambient display working
   - Create script that queries JSON for the jam_time_is_now flag
-- Use associative array so JSON makes more sense
 - Check for valid format at the beginning of the script
 
 ## Log
@@ -16,6 +15,7 @@
 - Turn off automatic refresh
 - Get ambient display working
   - Return JSON from the PHP page if requested
+- Use associative array so JSON makes more sense
 
 
 ### 2022-12-25
