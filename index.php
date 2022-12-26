@@ -1,36 +1,7 @@
 <?php
 
-/*
-
-API Data
-
- numip,
- port,
- country,
- maxclients,
- perm,
- name,
- ipaddrs,
- city,
- ip,
- ping,
- os,
- version,
- versionsort,
- nclients,
- clients
-    chanid,
-    country,
-    instrument,
-    skill,
-    name,
-    city
- index
-*/ 
-
-
 // Some constants
-define('MAX_PING_MS', 300); //50
+define('MAX_PING_MS', 50);
 define('MIN_CLIENTS', 1);
 define('API_ENDPOINT', 'http://localhost:8000/servers.php');
 define('EXCLUDE_INSTRUMENT', 'Bass Guitar');
