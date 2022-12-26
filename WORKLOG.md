@@ -2,6 +2,8 @@
 
 ## TODO
 
+- Get ambient display working
+
 ## Log
 
 ### 2022-12-25
