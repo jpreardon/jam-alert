@@ -2,6 +2,8 @@
 
 ## TODO
 
+- Make page readable on a phone
+- Try to add a last polled time or similar so one can investigate whether the script is still working
 - Check for valid format parameter at the beginning of the index.php
 - Get systemd to run the python script at the right time and remove the initial sleep delay from the python script
 
@@ -20,6 +22,7 @@
   - Get GPIO working on raspberry pi
 - Use associative array so JSON makes more sense
 - Move configs to config.php, add client directory with the most basic of python scripts.
+- Update readme with some pictures of the prototype.
 
 Helpful for re-imaging raspberry pi: https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html
 
