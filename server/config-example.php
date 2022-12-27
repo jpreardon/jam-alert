@@ -8,8 +8,8 @@
     define('EXCLUDE_INSTRUMENT', 'Bass Guitar');
     define('HIGHLIGHT_INSTRUMENT', 'Drums');
     /* Domain */
-    define('DOMAIN', 'localhost');
-    define('API_ENDPOINT', '[PATH TO jamulus-php servers.php file]');
+    // This should be the full path to the servers.php file
+    define('API_ENDPOINT', '[http://localhost/jamulus-php/servers.php]');
 ?>
 
 

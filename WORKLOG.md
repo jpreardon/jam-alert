@@ -3,7 +3,7 @@
 ## TODO
 
 - Get ambient display working
-  - Create script that queries JSON for the jam_time_is_now flag
+    - Get GPIO working on raspberry pi
 - Check for valid format at the beginning of the script
 
 ## Log
@@ -16,12 +16,15 @@
 - Get ambient display working
   - Return JSON from the PHP page if requested
   - Move server scripts into a 'server' directory
+  - Create script that queries JSON for the jam_time_is_now flag
 - Use associative array so JSON makes more sense
 - Move configs to config.php, add client directory with the most basic of python scripts.
 
 Helpful for re-imaging raspberry pi: https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html
 
 Helpful for setting up Apache and PHP: https://pimylifeup.com/raspberry-pi-apache/
+
+Raspi Pinouts: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
 
 ### 2022-12-25
 
