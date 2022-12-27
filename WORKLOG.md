@@ -9,6 +9,10 @@
 
 ## Log
 
+### 2022-12-27
+
+- Change the LED behavior, turn blue on only when polling server, blink green.
+
 ### 2022-12-26
 
 - Clean up instrument listing so it's more readable.

@@ -3,12 +3,12 @@
 import json
 import urllib.request
 import time
-from gpiozero import LED
+from gpiozero import PWMLED
 
 # Blue LED on 23, Green LED on 24
 
-blueLed = LED(23)
-greenLed = LED(24)
+blueLed = PWMLED(23)
+greenLed = PWMLED(24)
 
 # Wait 30 seconds before trying to contact the server
 # This is a hack, but when run from systemd on boot,
@@ -16,13 +16,14 @@ greenLed = LED(24)
 time.sleep(30)
 
 while True:
-  blueLed.on()
+  blueLed.on() # Turn on blue led while polling
   if json.loads(urllib.request.urlopen("http://jam.local?format=json").read())['jam_time_is_now'] == True:
     # It's jam time! Hit the lights!
-    greenLed.on()
-    print('jamtime!!!')
+    greenLed.pulse() # Let's see how annoying this is...
+    print('light on')
   else:
     # It's not jam time... Shut off the lights.
     greenLed.off()
-    print('not jamtime :(')
+    print('light off')
+  blueLed.off() # Turn blue led off when done
   time.sleep(120) # Check every two minutes, this seems reasonable.
