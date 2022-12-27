@@ -2,9 +2,8 @@
 
 ## TODO
 
-- Get ambient display working
-    - Get GPIO working on raspberry pi
-- Check for valid format at the beginning of the script
+- Check for valid format parameter at the beginning of the index.php
+- Get systemd to run the python script at the right time and remove the initial sleep delay from the python script
 
 ## Log
 
@@ -17,6 +16,8 @@
   - Return JSON from the PHP page if requested
   - Move server scripts into a 'server' directory
   - Create script that queries JSON for the jam_time_is_now flag
+  - Get python client script working on Raspberry Pi at boot time
+  - Get GPIO working on raspberry pi
 - Use associative array so JSON makes more sense
 - Move configs to config.php, add client directory with the most basic of python scripts.
 
@@ -25,6 +26,10 @@ Helpful for re-imaging raspberry pi: https://www.tomshardware.com/reviews/raspbe
 Helpful for setting up Apache and PHP: https://pimylifeup.com/raspberry-pi-apache/
 
 Raspi Pinouts: https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
+
+Helpful for getting systemd set up: https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/
+
+Note that I had to add a delay to the python script since systemd was starting the script too early.
 
 ### 2022-12-25
 

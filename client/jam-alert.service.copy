@@ -1,0 +1,10 @@
+[Unit]
+Description=Jam Alert Service
+After=network-online.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python3 /home/jammer/jam-alert/client/jam-alert.py > /home/jammer/jam-alert/client/jam-alert.log 2>&1
+
+[Install]
+WantedBy=multi-user.target
