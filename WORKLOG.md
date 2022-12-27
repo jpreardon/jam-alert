@@ -3,6 +3,8 @@
 ## TODO
 
 - Make page readable on a phone
+- Add a button to trigger an immediate query?
+- Make parameters configurable through web?
 - Try to add a last polled time or similar so one can investigate whether the script is still working
 - Check for valid format parameter at the beginning of the index.php
 - Get systemd to run the python script at the right time and remove the initial sleep delay from the python script
@@ -32,7 +34,7 @@ Raspi Pinouts: https://www.raspberrypi.com/documentation/computers/raspberry-pi.
 
 Helpful for getting systemd set up: https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/
 
-Note that I had to add a delay to the python script since systemd was starting the script too early.
+Note that I had to add a delay to the python script since systemd was starting the script too early. A copy of the systemd file is in client directory of this repository.
 
 ### 2022-12-25
 
