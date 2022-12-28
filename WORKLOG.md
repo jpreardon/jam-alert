@@ -2,6 +2,7 @@
 
 ## TODO
 
+- Remove blue LED?
 - Make page readable on a phone
 - Add a button to trigger an immediate query?
 - Make parameters configurable through web?
@@ -10,6 +11,10 @@
 - Get systemd to run the python script at the right time and remove the initial sleep delay from the python script
 
 ## Log
+
+### 2022-12-28
+
+- Change the LED behavior some more. Turn off blue light altogether and stop blinking the green.
 
 ### 2022-12-27
 
