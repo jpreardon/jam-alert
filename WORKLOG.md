@@ -12,6 +12,12 @@
 
 ## Log
 
+### 2022-12-30
+
+In an effort to reduce the number of calls being made to directory servers, I'll only check the ones I am likely to find people to jam with. In my case, I think that's the "any genre" servers and rock. We'll take that as a simple, optional parameter in the request.
+
+- Add servers parameter to request URL, pass it in the python script.
+
 ### 2022-12-28
 
 - Change the LED behavior some more. Turn off blue light altogether and stop blinking the green.

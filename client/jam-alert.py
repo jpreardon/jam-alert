@@ -17,7 +17,7 @@ time.sleep(30)
 
 while True:
   # blueLed.on() # Turn on blue led while polling
-  if json.loads(urllib.request.urlopen("http://jam.local?format=json").read())['jam_time_is_now'] == True:
+  if json.loads(urllib.request.urlopen("http://jam.local?format=json&servers=4").read())['jam_time_is_now'] == True:
     # It's jam time! Hit the lights!
     greenLed.on() # Let's see how annoying this is...
     print('light on')

@@ -2,16 +2,8 @@
 require_once 'functions.php';
 require_once 'config.php';
 
-// Directory servers to check (these are the built-in Jamulus ones https://jamulus.io/wiki/Running-a-Server#3-directory)
-$directory_servers = array(
-    ['Any Genre 1', 'anygenre1.jamulus.io:22124'],
-    ['Any Genre 2', 'anygenre2.jamulus.io:22224'],
-    ['Any Genre 3', 'anygenre3.jamulus.io:22624'],
-    ['Genre Rock', 'rock.jamulus.io:22424'],
-    ['Genre Jazz', 'jazz.jamulus.io:22324'],
-    ['Genre Classical/Folk', 'classical.jamulus.io:22524'],
-    ['Genre Choral/Barbershop', 'choral.jamulus.io:22724']
-); 
+// Get the list of servers
+$directory_servers = get_directory_servers();
 
 // The array we're going to fill up with the relevant information for display later
 $display_output = array();

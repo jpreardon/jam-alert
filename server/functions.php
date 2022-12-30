@@ -1,5 +1,28 @@
 <?php
 
+function get_directory_servers() {
+
+    // Directory servers (these are the built-in Jamulus ones https://jamulus.io/wiki/Running-a-Server#3-directory)
+    $all_servers = array(
+        ['Any Genre 1', 'anygenre1.jamulus.io:22124'],
+        ['Any Genre 2', 'anygenre2.jamulus.io:22224'],
+        ['Any Genre 3', 'anygenre3.jamulus.io:22624'],
+        ['Genre Rock', 'rock.jamulus.io:22424'],
+        ['Genre Jazz', 'jazz.jamulus.io:22324'],
+        ['Genre Classical/Folk', 'classical.jamulus.io:22524'],
+        ['Genre Choral/Barbershop', 'choral.jamulus.io:22724']
+    ); 
+
+    $requested_servers = array();
+
+    // If request has a servers parameter, return only the number of servers requested.
+    if(array_key_exists('servers', $_REQUEST) && $_REQUEST['servers'] > 0 && $_REQUEST['servers'] <= count($all_servers)) {
+        return array_slice($all_servers, 0, $_REQUEST['servers']);
+    } else {
+        return $all_servers;
+    };
+};
+
 function render_html($jam_time_is_now, $display_output) {
     $html = <<<EOF
     <!DOCTYPE html>
